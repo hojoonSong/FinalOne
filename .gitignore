@@ -1,5 +1,6 @@
 HELP.md
 .gradle
+.env
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -22,7 +23,6 @@ bin/
 *.iws
 *.iml
 *.ipr
-.env
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/

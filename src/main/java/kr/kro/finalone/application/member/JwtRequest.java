@@ -11,12 +11,11 @@ public class JwtRequest implements Serializable {
     private String memberName;
     private String password;
 
-    // standard getters and setters
     public String getMemberName() {
         return memberName;
     }
 
-    public void setUsername(String memberName) {
+    public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 

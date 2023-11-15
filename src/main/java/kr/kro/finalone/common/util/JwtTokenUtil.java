@@ -13,21 +13,21 @@ public class JwtTokenUtil {
 
     private final String secret = "your_secret_key"; // 실제 사용 시 안전한 저장 방식 필요
 
-    public String generateToken(String username) {
+    public String generateToken(String memberName) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(memberName)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10시간 유효
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
     }
 
-    public Boolean validateToken(String token, String username) {
-        final String usernameFromToken = getUsernameFromToken(token);
-        return (usernameFromToken.equals(username) && !isTokenExpired(token));
+    public Boolean validateToken(String token, String memberName) {
+        final String memberNameFromToken = getMemberNameFromToken(token);
+        return (memberNameFromToken.equals(memberName) && !isTokenExpired(token));
     }
 
-    public String getUsernameFromToken(String token) {
+    public String getMemberNameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
     }
 
