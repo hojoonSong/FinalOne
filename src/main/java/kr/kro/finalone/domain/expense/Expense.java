@@ -1,9 +1,9 @@
-package kr.kro.finalone.expense.model;
+package kr.kro.finalone.domain.expense;
 
-import kr.kro.finalone.user.model.User;
-import kr.kro.finalone.category.model.Category;
+import jakarta.persistence.*;
+import kr.kro.finalone.domain.category.Category;
+import kr.kro.finalone.domain.member.Member;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,14 +12,8 @@ import java.util.Date;
 public class Expense {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     private Integer id;
-
-    @Column(nullable = false)
-    private Integer userId;
-
-    @Column(nullable = false)
-    private Integer categoryId;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal amount;
@@ -32,8 +26,8 @@ public class Expense {
     private String note;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)

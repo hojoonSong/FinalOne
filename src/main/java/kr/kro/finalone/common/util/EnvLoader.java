@@ -1,4 +1,4 @@
-package kr.kro.finalone.common;
+package kr.kro.finalone.common.util;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import io.github.cdimascio.dotenv.DotenvEntry;

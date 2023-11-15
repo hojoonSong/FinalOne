@@ -1,8 +1,9 @@
-package kr.kro.finalone.category.model;
+package kr.kro.finalone.domain.category;
 
-import kr.kro.finalone.budget.model.Budget;
-import kr.kro.finalone.expense.model.Expense;
-import javax.persistence.*;
+import jakarta.persistence.*;
+import kr.kro.finalone.domain.budget.Budget;
+import kr.kro.finalone.domain.expense.Expense;
+
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq")
     private Integer id;
 
     @Column(nullable = false, length = 255)
